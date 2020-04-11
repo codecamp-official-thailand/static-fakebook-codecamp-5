@@ -1,5 +1,11 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Form, Input, Button } from "antd";
+import { Link } from "react-router-dom";
+
+const formItemLayout = {
+  labelCol: { span: 24 },
+  wrapperCol: { span: 24 },
+};
 
 function Login() {
   return (
@@ -12,12 +18,30 @@ function Login() {
         />
       </Col>
       <Col>
-        <Row>Username</Row>
-        <Row>Password</Row>
-        <Row>
-          <Col>Signup</Col>
-          <Col>Login</Col>
-        </Row>
+        <Form {...formItemLayout}>
+          <Row>
+            <Form.Item label="Username" name="username">
+              <Input />
+            </Form.Item>
+          </Row>
+          <Row>
+            <Form.Item label="Password" name="password">
+              <Input.Password />
+            </Form.Item>
+          </Row>
+          <Row justify="space-around">
+            <Col>
+              <Link to="/signup">
+                <Button type="link">Signup</Button>
+              </Link>
+            </Col>
+            <Col>
+              <Button htmlType="submit" type="primary">
+                Login
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </Col>
     </Row>
   );
